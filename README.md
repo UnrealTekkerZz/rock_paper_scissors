@@ -1,0 +1,1 @@
+This project involves designing and implementing the logic of the game, Rock-Paper-Scissors

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<script>
+
+    function computerChoose() {
+        var computerChoice = [`Rock`, `Paper`, `Scissors`];
+        return computerChoice[Math.floor(Math.random() * 3)];
+        
+
+    }
+
+    function playerChoose() {
+        var playerChoice = prompt(`Choose your weapon`).toLowerCase();
+        var firstLetter = playerChoice.slice(0,1).toUpperCase();
+        playerChoice = firstLetter + playerChoice.slice(1);
+
+        if (playerChoice == `Rock` || playerChoice == `Paper` || playerChoice == `Scissors`) {
+            return playerChoice;
+        } else {
+            var invalidOption = true;
+            console.log(`Invalid choice, please choose again.`);
+
+            while (invalidOption) {
+                playerChoice = prompt(`Choose your weapon`).toLowerCase();
+                var firstLetter = playerChoice.slice(0,1).toUpperCase();
+                playerChoice = firstLetter + playerChoice.slice(1);
+
+                if (playerChoice == `Rock` || playerChoice == `Paper` || playerChoice == `Scissors`) {
+                    invalidOption = false;
+                    return playerChoice;
+                }
+
+                console.log(`Invalid choice, please choose again.`);
+            }
+        }
+    }
+
+    function playRound(computerChoice, playerChoice) {
+        resultString = null;
+
+        switch (playerChoice) {
+            case `Rock`:
+                if (computerChoice == `Rock`){
+                    return resultString = `It's a draw!`;
+                } else if (computerChoice == `Paper`) {
+                    return resultString = `Paper beats Rock, you lose!`;
+                } else {
+                    return resultString = `Rock beats Scissors, you win!`;
+                }
+            break;
+
+            case `Paper`:
+            if (computerChoice == `Rock`){
+                    return resultString = `Paper beats Rock, you win!`;
+                } else if (computerChoice == `Paper`) {
+                    return resultString = `It's a draw!`;
+                } else {
+                    return resultString = `Scissors beats Paper, you lose!`;
+                }
+            break;
+
+            case `Scissors`:
+            if (computerChoice == `Rock`){
+                    return resultString = `Rock beats Scissors, you lose!`;
+                } else if (computerChoice == `Paper`) {
+                    return resultString = `Scissors beats Paper, you win!`;
+                } else {
+                    return resultString = `It's a draw!`;
+                }
+            break;
+
+            default:
+                return resultString = `Something's wrong`;
+        }
+
+    }
+
+    var computerChoice = computerChoose();
+    var playerChoice = playerChoose();
+    var roundResult = playRound(computerChoice, playerChoice);
+
+    console.log(roundResult);
+
+
+
+</script>
