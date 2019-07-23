@@ -35,8 +35,8 @@
         }
     }
 
-    function playRound(computerChoice, playerChoice) {
-        resultString = null;
+    function playRound(computerChoice, playerChoice, playerWon) {
+        var resultString = null;
 
         switch (playerChoice) {
             case `Rock`:
@@ -75,9 +75,25 @@
 
     }
 
-    var computerChoice = computerChoose();
-    var playerChoice = playerChoose();
-    var roundResult = playRound(computerChoice, playerChoice);
+    function game(computerChoice, playerChoice) {
+        var i = 0;
+        var playerScore = 0;
+        var computerScore = 0;
+        var playerWon = null;
+
+        while (i != 5) {
+            computerChoice = computerChoose();
+            playerChoice = playerChoose();
+            playRound(computerChoice, playerChoice, playerWon);
+
+        }
+
+    }
+
+    game(computerChoice, playerChoice);
+    //var computerChoice = computerChoose();
+    //var playerChoice = playerChoose();
+    //var roundResult = playRound(computerChoice, playerChoice);
 
     console.log(roundResult);
 
